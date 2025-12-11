@@ -11,6 +11,8 @@ interface AccountCardProps {
   connected?: boolean;
 
   lastLogin?: string;
+  platform?: string;
+  identifier?: string;
 
   imagen?: string;
   image?: string;
@@ -19,6 +21,7 @@ interface AccountCardProps {
   onEditar?: () => void;
   onEdit?: () => void;
   onAction?: () => void;
+  onSelect?: () => void;
 }
 
 export default function AccountCard(props: AccountCardProps) {
@@ -41,7 +44,7 @@ export default function AccountCard(props: AccountCardProps) {
   };
 
   return (
-    <div className="account-card">
+    <div className={`account-card${props.onSelect ? ' selectable' : ''}`} onClick={props.onSelect} role={props.onSelect ? 'button' : undefined} tabIndex={props.onSelect ? 0 : undefined}>
       {imageSrc && (
         <div className="account-image">
           <img src={imageSrc} alt={displayName} />
@@ -50,6 +53,7 @@ export default function AccountCard(props: AccountCardProps) {
 
       <div className="account-info">
         <h3>{displayName}</h3>
+        {props.platform && <div className="platform">{props.platform}{props.identifier ? ` · ${props.identifier}` : ''}</div>}
         <p className={`status-badge ${isConnected ? 'connected' : 'disconnected'}`}>
           {statusLabel}
         </p>
@@ -60,14 +64,7 @@ export default function AccountCard(props: AccountCardProps) {
         )}
       </div>
 
-      <div className="account-actions">
-        <button className="btn primary small" onClick={handleAction}>
-          {actionLabel}
-        </button>
-        <button className="btn secondary small" onClick={handleEdit}>
-          Editar
-        </button>
-      </div>
+      {/* Actions moved to the parent (Inicio/Cuentas) */}
     </div>
   );
 }

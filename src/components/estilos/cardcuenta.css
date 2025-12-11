@@ -1,17 +1,42 @@
 .account-card {
-  display:flex; align-items:center; gap:12px;
-  background: rgba(94, 6, 153, 0.959); padding:8px; border-radius:8px;
-  max-width:320px; width:100%; margin: 8px auto; border:1px solid rgba(228, 15, 15, 0.03);
+  --card-alpha: 0.03;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255,255,255,var(--card-alpha));
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 12px;
+  border-radius: 10px;
+  width: 100%;
+  margin: 0;
+  border: 1px solid rgba(255,255,255,0.04);
+  box-shadow: 0 8px 22px rgba(2,6,23,0.12);
+  transition: transform 180ms ease, box-shadow 180ms ease;
 }
-.account-image img { width:44px;height:44px;border-radius:50%;object-fit:cover; }
+
+.account-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 36px rgba(2,6,23,0.18);
+}
+
+.account-card.selectable { cursor: pointer; }
+.account-card.selected {
+  border-color: rgba(0,102,204,0.28);
+  box-shadow: 0 18px 46px rgba(0,102,204,0.10);
+  transform: translateY(-6px);
+}
+.account-image img { width:48px;height:48px;border-radius:50%;object-fit:cover; }
 .account-info { flex:1; }
-.account-info h3 { margin:0;font-size:0.98rem;color:var(--text); }
-.status-badge { display:inline-block;padding:4px 8px;border-radius:12px;font-size:0.75rem;margin-top:6px; }
+.account-info h3 { margin:0;font-size:1rem;color:var(--text, #e6eef8); }
+.platform { color: var(--text-muted, #9fb0c8); font-size: 0.85rem; margin-top:4px; }
+.status-badge { display:inline-block;padding:4px 8px;border-radius:12px;font-size:0.75rem;margin-top:8px; }
 .status-badge.connected { background: rgba(76,175,80,0.12); color:#4caf50; }
 .status-badge.disconnected { background: rgba(244,67,54,0.12); color:#f44336; }
-.meta { margin-top:6px; color:#aab6cc; font-size:0.82rem; display:flex; gap:10px; flex-wrap:wrap; }
+.meta { margin-top:8px; color:#aab6cc; font-size:0.82rem; display:flex; gap:10px; flex-wrap:wrap; }
 .account-actions { display:flex; gap:8px; align-items:center; }
 .btn { border:none; border-radius:8px; padding:8px 10px; cursor:pointer; font-weight:600; }
 .btn.small { padding:6px 8px; font-size:0.82rem; border-radius:6px; }
-.btn.primary { background:var(--primary); color:#dba3a3; }
+.btn.primary { background:var(--primary, #0066cc); color:#fff; }
 .btn.secondary { background: rgba(255,255,255,0.06); color:#fff; }
+.btn.danger { background: rgba(244,67,54,0.12); color:#f44336; border:1px solid rgba(244,67,54,0.18); }

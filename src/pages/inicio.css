@@ -1,0 +1,201 @@
+.inicio-page {
+  max-width: 1000px;
+}
+
+.hero {
+  background: linear-gradient(135deg, rgba(0, 102, 204, 0.2) 0%, rgba(0, 210, 255, 0.1) 100%);
+  border: 1px solid rgba(0, 102, 204, 0.3);
+  padding: 40px;
+  border-radius: 16px;
+  margin-bottom: 32px;
+  backdrop-filter: blur(10px);
+}
+
+.hero-title {
+  margin: 0 0 12px 0;
+  font-size: 2.2rem;
+  color: #e6eef8;
+  font-weight: 700;
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: #a0b0cc;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* Estadísticas */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 24px;
+  border-radius: 12px;
+  text-align: center;
+  transition: all 200ms ease;
+  cursor: default;
+}
+
+.stat-card:hover {
+  background: rgba(0, 102, 204, 0.15);
+  border-color: rgba(0, 102, 204, 0.3);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0066cc;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  color: #a0b0cc;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* Sección recientes */
+.recent-section {
+  margin-top: 32px;
+}
+
+.recent-section h2 {
+  margin: 0 0 20px 0;
+  font-size: 1.4rem;
+  color: #e6eef8;
+}
+
+.recent-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+/* Top layout: overview left and accounts right */
+.inicio-top {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.overview-card {
+  --overview-alpha: 0.06;
+  background: rgba(255,255,255,var(--overview-alpha));
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 22px 18px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.25);
+  position: relative;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.overview-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  border-radius: 12px 0 0 12px;
+  background: linear-gradient(180deg, var(--primary) 0%, #00d4ff 100%);
+  opacity: 0.95;
+}
+
+.overview-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(2,6,23,0.35);
+}
+
+.overview-header {
+  color: #a0b0cc;
+  font-size: 0.9rem;
+}
+
+.overview-value {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #0066cc;
+  margin: 8px 0;
+}
+
+.overview-sub {
+  color: #7a8ca0;
+  font-size: 0.9rem;
+}
+
+.recent-accounts h2 { margin: 0 0 12px 0; color: #e6eef8; }
+
+.recent-list-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.03);
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.actions-toolbar {
+  margin-top: 12px;
+  padding: 12px;
+  border-top: 1px dashed rgba(255,255,255,0.04);
+}
+
+.actions-inner { display:flex; gap:10px; justify-content:center; }
+.actions-inner .btn { padding:10px 14px; border-radius:8px; font-weight:700; }
+.actions-inner .btn.primary { background:var(--primary, #0066cc); color:#fff; }
+.actions-inner .btn.secondary { background: rgba(255,255,255,0.06); color:#fff; }
+.actions-inner .btn.danger { background: rgba(244,67,54,0.12); color:#f44336; border:1px solid rgba(244,67,54,0.18); }
+
+.hint {
+  color: #7a8ca0;
+  text-align: center;
+  padding: 40px 20px;
+  grid-column: 1 / -1;
+}
+
+/* Ensure account cards take full width in the vertical list */
+.recent-list-vertical .account-card {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 24px;
+  }
+
+  .hero-title {
+    font-size: 1.6rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .recent-list {
+    grid-template-columns: 1fr;
+  }
+}

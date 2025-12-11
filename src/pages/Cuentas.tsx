@@ -5,13 +5,15 @@ import '../components/estilos/cuentas.css';
 interface Account {
   id: number;
   title: string;
+  platform?: string;
+  identifier?: string; // e.g., RUT or ID for special entities
   status: 'Conectado' | 'Desconectado';
   lastLogin: string;
 }
 
 export default function Cuentas() {
   const [accounts, setAccounts] = useState<Account[]>([]);
-  const [form, setForm] = useState({ title: '', status: 'Desconectado' as const, lastLogin: '' });
+  const [form, setForm] = useState({ title: '', platform: 'Facebook', identifier: '', status: 'Desconectado' as const });
   const [editingId, setEditingId] = useState<number | null>(null);
 
   useEffect(() => {
@@ -28,33 +30,33 @@ export default function Cuentas() {
       alert('Nombre de la cuenta es requerido');
       return;
     }
-    if (!form.lastLogin.trim()) {
-      alert('Fecha de último login es requerida');
-      return;
-    }
+
+    const now = new Date();
+    const lastLogin = now.toISOString().split('T')[0];
 
     if (editingId) {
       setAccounts(prev =>
         prev.map(a =>
           a.id === editingId
-            ? { ...a, title: form.title, status: form.status, lastLogin: form.lastLogin }
+            ? { ...a, title: form.title, platform: form.platform, identifier: form.identifier, status: form.status }
             : a
         )
       );
     } else {
       const id = Math.max(...accounts.map(a => a.id), 0) + 1;
-      setAccounts(prev => [...prev, { id, ...form }]);
+      const newAccount: Account = { id, title: form.title, platform: form.platform, identifier: form.identifier || undefined, status: form.status, lastLogin };
+      setAccounts(prev => [...prev, newAccount]);
     }
     resetForm();
   };
 
   const resetForm = () => {
-    setForm({ title: '', status: 'Desconectado', lastLogin: '' });
+    setForm({ title: '', platform: 'Facebook', identifier: '', status: 'Desconectado' });
     setEditingId(null);
   };
 
   const edit = (a: Account) => {
-    setForm({ title: a.title, status: a.status, lastLogin: a.lastLogin });
+    setForm({ title: a.title, platform: a.platform || 'Facebook', identifier: a.identifier || '', status: a.status });
     setEditingId(a.id);
   };
 
@@ -91,38 +93,44 @@ export default function Cuentas() {
             <input
               id="title"
               type="text"
-              placeholder="Ej: Facebook Principal, Instagram Negocio"
+              placeholder="Ej: Facebook Principal, BancoChile - Empresa"
               value={form.title}
               onChange={e => setForm({ ...form, title: e.target.value })}
             />
           </div>
 
           <div className="form-group">
+            <label htmlFor="platform">Plataforma / Tipo</label>
+            <select id="platform" value={form.platform} onChange={e => setForm({ ...form, platform: e.target.value })}>
+              <option>Facebook</option>
+              <option>Instagram</option>
+              <option>Twitter</option>
+              <option>Google</option>
+              <option>Entidad Chilena</option>
+              <option>Otra</option>
+            </select>
+          </div>
+
+          {form.platform === 'Entidad Chilena' && (
+            <div className="form-group">
+              <label htmlFor="identifier">RUT / Identificador</label>
+              <input id="identifier" type="text" placeholder="12.345.678-9" value={form.identifier} onChange={e => setForm({ ...form, identifier: e.target.value })} />
+            </div>
+          )}
+
+          <div className="form-group">
             <label htmlFor="status">Estado de Conexión</label>
             <select
               id="status"
               value={form.status}
-              onChange={e =>
-                setForm({
-                  ...form,
-                  status: e.target.value as 'Conectado' | 'Desconectado',
-                })
-              }
+              onChange={e => setForm({ ...form, status: e.target.value as 'Conectado' | 'Desconectado' })}
             >
               <option value="Desconectado">Desconectado</option>
               <option value="Conectado">Conectado</option>
             </select>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="lastLogin">Último Login *</label>
-            <input
-              id="lastLogin"
-              type="date"
-              value={form.lastLogin}
-              onChange={e => setForm({ ...form, lastLogin: e.target.value })}
-            />
-          </div>
+          {/* Nota: la fecha de último login se gestiona automáticamente al crear la cuenta. */}
 
           <div className="form-actions">
             <button className="btn primary" onClick={save}>
@@ -150,17 +158,23 @@ export default function Cuentas() {
                 <div key={a.id} className="account-list-item">
                   <AccountCard
                     title={a.title}
+                    platform={a.platform}
+                    identifier={a.identifier}
                     status={a.status}
                     lastLogin={a.lastLogin}
+                    actionLabel={a.status === 'Conectado' ? 'Conectar' : 'Conectar'}
                     onAction={() => toggle(a.id)}
                     onEdit={() => edit(a)}
                   />
                   <div className="item-actions">
+                    <button className="btn small primary" onClick={() => toggle(a.id)}>
+                      {a.status === 'Conectado' ? 'Desconectar' : 'Conectar'}
+                    </button>
                     <button className="btn small secondary" onClick={() => edit(a)}>
                       Editar
                     </button>
                     <button className="btn small danger" onClick={() => remove(a.id)}>
-                      Eliminar
+                      Borrar
                     </button>
                   </div>
                 </div>

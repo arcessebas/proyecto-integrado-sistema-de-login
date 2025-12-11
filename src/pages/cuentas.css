@@ -1,0 +1,252 @@
+.cuentas-page {
+  max-width: 1200px;
+}
+
+.cuentas-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.cuentas-header h1 {
+  margin: 0 0 12px 0;
+  font-size: 2rem;
+  color: #e6eef8;
+}
+
+.cuentas-header p {
+  margin: 0;
+  color: #a0b0cc;
+  font-size: 1rem;
+}
+
+.cuentas-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 24px;
+}
+
+/* ========== FORMULARIO ========== */
+.cuentas-form-section {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+  transition: all 200ms ease;
+}
+
+.cuentas-form-section:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.cuentas-form-section h2 {
+  margin: 0 0 20px 0;
+  color: #e6eef8;
+  font-size: 1.2rem;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #a0b0cc;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #e6eef8;
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all 200ms ease;
+}
+
+.form-group input::placeholder {
+  color: #5a7a9a;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0066cc;
+  background: rgba(0, 102, 204, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.form-actions .btn {
+  width: 100%;
+}
+
+/* ========== LISTA ========== */
+.cuentas-list-section {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 24px;
+  overflow-y: auto;
+  transition: all 200ms ease;
+  max-height: 600px;
+}
+
+.cuentas-list-section:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.list-header h2 {
+  margin: 0;
+  color: #e6eef8;
+  font-size: 1.2rem;
+}
+
+.empty-hint {
+  text-align: center;
+  color: #7a8ca0;
+  padding: 40px 20px;
+}
+
+.accounts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.account-list-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px;
+  transition: all 200ms ease;
+}
+
+.account-list-item:hover {
+  background: rgba(0, 102, 204, 0.1);
+  border-color: rgba(0, 102, 204, 0.3);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.item-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.item-actions .btn.small {
+  flex: 1;
+  padding: 8px 10px;
+  font-size: 0.8rem;
+}
+
+/* ========== BOTONES RESPONSIVE ========== */
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 200ms ease;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 102, 204, 0.3);
+}
+
+.btn.secondary {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e6eef8;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn.danger {
+  background: rgba(244, 67, 54, 0.15);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.3);
+}
+
+.btn.danger:hover {
+  background: rgba(244, 67, 54, 0.25);
+  border-color: rgba(244, 67, 54, 0.5);
+}
+
+.btn.small {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .cuentas-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cuentas-form-section {
+    position: relative;
+    top: 0;
+    max-height: none;
+  }
+}
+
+@media (max-width: 700px) {
+  .cuentas-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .cuentas-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cuentas-list-section {
+    max-height: none;
+  }
+
+  .item-actions {
+    flex-direction: column;
+  }
+
+  .item-actions .btn.small {
+    width: 100%;
+  }
+}
