@@ -1,0 +1,15 @@
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: linear-gradient(135deg,#1e3c72,#2a5298);
+  z-index: 1200;
+}
+.menu-toggle, .logout-btn {
+  background: transparent; border: none; color: #fff; cursor: pointer; padding: 8px; border-radius: 6px;
+}
+.menu-toggle:hover, .logout-btn:hover { background: rgba(255,255,255,0.06); }
+.navbar-logo { flex: 1; display: flex; justify-content: center; font-size: 1.3rem; color: #fff; }

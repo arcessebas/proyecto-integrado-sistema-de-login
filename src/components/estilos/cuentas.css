@@ -1,0 +1,230 @@
+.cuentas-page {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Header */
+.cuentas-header {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 12px;
+}
+.cuentas-header h1 {
+  margin: 0 0 8px 0;
+  font-size: 1.8rem;
+}
+.cuentas-header p {
+  margin: 0;
+  color: #bdbdbd;
+}
+
+/* Layout: formulario + lista lado a lado */
+.cuentas-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 24px;
+}
+
+/* ========== FORMULARIO ========== */
+.cuentas-form-section {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 20px;
+  height: fit-content;
+  position: sticky;
+  top: 80px;
+}
+.cuentas-form-section h2 {
+  margin: 0 0 16px 0;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.form-group {
+  margin-bottom: 14px;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #aaa;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 6px;
+  color: #fff;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.form-group input::placeholder {
+  color: #666;
+}
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #0066cc;
+  background: rgba(0,102,204,0.1);
+}
+
+.form-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+/* ========== LISTA ========== */
+.cuentas-list-section {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 20px;
+  overflow-y: auto;
+}
+.list-header h2 {
+  margin: 0 0 16px 0;
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.empty-list {
+  text-align: center;
+  padding: 40px 20px;
+  color: #666;
+}
+.empty-list p {
+  margin: 8px 0;
+}
+.empty-list .hint {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.accounts-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.account-list-item {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 200ms;
+}
+.account-list-item:hover {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.item-header h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 0.95rem;
+}
+
+.status-badge {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.status-badge.connected {
+  background: rgba(76, 175, 80, 0.2);
+  color: #4caf50;
+}
+.status-badge.disconnected {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+}
+
+.item-details {
+  margin-bottom: 10px;
+  color: #aaa;
+  font-size: 0.85rem;
+}
+.item-details p {
+  margin: 4px 0;
+}
+
+.item-actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* Botones */
+.btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 200ms;
+  font-size: 0.85rem;
+}
+.btn.small {
+  padding: 5px 8px;
+  font-size: 0.75rem;
+}
+.btn.primary {
+  background: #0066cc;
+  color: #fff;
+}
+.btn.primary:hover {
+  background: #0052a3;
+}
+.btn.secondary {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.btn.secondary:hover {
+  background: rgba(255,255,255,0.15);
+}
+.btn.danger {
+  background: rgba(244, 67, 54, 0.2);
+  color: #f44336;
+  border: 1px solid rgba(244, 67, 54, 0.4);
+}
+.btn.danger:hover {
+  background: rgba(244, 67, 54, 0.3);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .cuentas-layout {
+    grid-template-columns: 1fr;
+  }
+  .cuentas-form-section {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .cuentas-page {
+    padding: 16px;
+  }
+  .item-actions {
+    flex-direction: column;
+  }
+  .btn.small {
+    width: 100%;
+  }
+}
